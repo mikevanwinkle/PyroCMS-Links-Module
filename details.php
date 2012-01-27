@@ -11,7 +11,7 @@
  */
 class Module_Links extends Module {
 
-	public $version = '0.5';
+	public $version = '1.0.1';
 	
 	function __construct()
 	{
