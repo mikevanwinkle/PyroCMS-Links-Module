@@ -46,7 +46,6 @@ class Admin extends Admin_Controller {
 	 * @return void
 	 */	
 	function edit($id = 0) {
-	
 
 		$this->method = 'edit';
 		
@@ -76,11 +75,13 @@ class Admin extends Admin_Controller {
 			
 			if(isset($update_id)) 
 			{
+				$this->pyrocache->delete_all('links_m');
+				$this->pyrocache->delete_all('links_groups_m');
 				if( $this->input->post('btnAction') == 'save_exit') 
 				{
-					redirect('admin/blogroll');
+					redirect('admin/links');
 				} else { 
-					redirect('admin/blogroll/edit/' . $id);
+					redirect('admin/links/edit/' . $id);
 				}
 			}
 		}
@@ -89,6 +90,7 @@ class Admin extends Admin_Controller {
 		$link = $this->links_m->get_by_id($id);
 		$this->data['link'] = $link[0];
 		$this->template->title($this->module_details['name'])
+			->append_metadata(js('links.js', 'links'))
 			->build('admin/form',$this->data);
 	}
 	
@@ -124,11 +126,30 @@ class Admin extends Admin_Controller {
 		
 		if(isset($insert_id)) 
 		{
-			$this->input->post('btnAction') == 'save_exit' ? redirect('admin/blogroll') : redirect('admin/blogroll/edit/' . $insert_id);
+			$this->pyrocache->delete_all('links_m');
+			$this->pyrocache->delete_all('links_groups_m');
+			$this->input->post('btnAction') == 'save_exit' ? redirect('admin/links') : redirect('admin/links/edit/' . $insert_id);
 		}
-		
+	
+		$this->data['link_groups'] = $this->pyrocache->model('links_groups_m','get_option_list','', 60 * 60 * 7 );
 		$this->link = array();
 		$this->template->title($this->module_details['name'])
+			->append_metadata(js('links.js', 'links'))
 			->build('admin/form',$this->data);
 	}	
+	
+	function delete($id) {
+		if(!isset($id)) 
+		{ 
+			$this->session->set_flashdata('error', lang('links_admin.delete_fail') );
+			redirect('admin/links'); 
+		} else {
+			$this->session->set_flashdata('success', lang('links_admin.delete_success') );
+			$this->links_m->delete($id); 
+			$this->pyrocache->delete_all('links_m');
+			$this->pyrocache->delete_all('links_groups_m');
+			redirect('admin/links');
+		}
+	
+	}
 }

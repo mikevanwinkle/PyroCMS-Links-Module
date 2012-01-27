@@ -29,14 +29,18 @@
 		<li>
 			<label for="link_group"><?php echo lang('links_admin.group_label'); ?></label>
 			<div class="input">
+			<?php if(empty($link_groups)): ?>
+				<p>You have not yet entered a link group.</p>
+			<?php else: ?>
 				<?php echo form_dropdown('link_group', $link_groups, @$link['link_group']); ?>
+			<?php endif; ?>
 			</div>
 		</li>
 		<li>
 			<label for="link_target"><?php echo lang('links_admin.target_label'); ?></label>
 			<div class="input">
 				<?php echo form_dropdown('link_target', array(
-						'' => 'None',
+						'' => '--none--',
 						'_blank' => '_blank',
 						'_parent' => '_parent'
 					), @$link['link_target']); ?>

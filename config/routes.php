@@ -29,4 +29,4 @@
  * @category	routes
  * @license     http://www.apache.org/licenses/LICENSE-2.0
  */
-$route['blogroll/admin/groups(:any)?'] = 'admin_groups$1';
+$route['links/admin/groups(:any)?'] = 'admin_groups$1';

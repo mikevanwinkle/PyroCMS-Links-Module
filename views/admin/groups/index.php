@@ -22,9 +22,10 @@
 					<td><?php echo $group->name; ?></td>
 					<td><?php echo $group->description; ?></td>
 					<td><?php echo $group->slug; ?></td>
-					<td><?php echo @$group->links; ?></td>
+					<td><?php echo @$group->count; ?></td>
 					<td class="actions">
-					<?php echo anchor('admin/blogroll/groups/edit/'.$group->id.'/', lang('global:edit'), 'class="button"'); ?></td>
+					<?php echo anchor('admin/links/groups/edit/'.$group->id.'/', lang('global:edit'), 'class="btn orange"'); ?>
+					<?php echo anchor('admin/links/groups/delete/'.$group->id.'/', lang('global:delete'), 'class="confirm btn red"'); ?></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>

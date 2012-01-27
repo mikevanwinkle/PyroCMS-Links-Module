@@ -1,15 +1,15 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * Blogroll Module
+ * Links Module
  *
- * @package		Blogroll Module
+ * @package		Links Module
  * @author		Mike Van Winkle
  * @copyright	Copyright (c) 2011, Mike Van Winkle
  * @license		http://www.mikevanwinkle.com
  * @link		http://www.mikevanwinkle.com
  */
-class Module_Blogroll extends Module {
+class Module_Links extends Module {
 
 	public $version = '0.5';
 	
@@ -26,7 +26,7 @@ class Module_Blogroll extends Module {
 	{
 		$info = array(
 			'name' => array(
-				'en' => 'Blogroll',
+				'en' => 'Links',
 			),
 			'description' => array(
 				'en' => 'A simple links manager for your pyrocms blog',
@@ -39,22 +39,22 @@ class Module_Blogroll extends Module {
 				'sections' => array(
 			   	'links' => array(
 				    'name' => 	'links_admin.title',
-				    'uri' => 	'admin/blogroll',
+				    'uri' => 	'admin/links',
 				    'shortcuts' => array(
 							array(
 						 	   'name' => 'links_admin.create_button',
-							    'uri' => 'admin/blogroll/create',
+							    'uri' => 'admin/links/create',
 							    'class' => 'add'
 							)
 						)	
 					),
-				'link_groups'=>array(
+				'links_groups'=>array(
 						'name'=> 'links_admin.groups',
-						'uri'	=> 'admin/blogroll/groups',
+						'uri'	=> 'admin/links/groups',
 						'shortcuts' => array(
 							array(
-								'name'=>'links_admin.create_button',
-								'uri'	=>'admin/blogroll/groups',
+								'name'=>'links_groups_admin.create_button',
+								'uri'	=>'admin/links/groups/create',
 								'class'=>'add'
 							)
 						)

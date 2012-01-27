@@ -24,7 +24,7 @@ class Links_m extends MY_Model {
 		$order = $order?$order:'desc';
 		$this->db->order_by($orderby,$order);
 		$links = $this->db->get('links');
-		return $links->result_array();
+		return $this->prepare($links->result_array());
 	}
 
 	function get_by_id($id) {
@@ -34,4 +34,31 @@ class Links_m extends MY_Model {
 		return $links->result_array();
 	}
 	
+	function get_alpha($groups = '') {
+		$this->db->order_by('link_name','ASC');
+		if(!empty($groups)) {
+			$links = $this->db->get_where('links',array('link_group'=>$groups));
+		} else {
+			$links = $this->db->get('links');
+		}
+		
+		return $links->result_array();
+	}
+	
+	function prepare($links) {
+		for($i = 0; $i < count($links); $i++ )
+		{
+			$owner = $this->pyrocache->model('links_m','get_owner',$links[$i]['link_owner']);
+			$links[$i]['link_owner'] = $owner[0]->username;
+		}
+		return $links;		
+	}
+	
+	function get_owner($id) {
+		$this->db->select('username');
+		$query = $this->db->get_where('users',array('id'=>$id));
+		return $query->result(); 
+		$query->free_result();
+	}
+
 }?>
