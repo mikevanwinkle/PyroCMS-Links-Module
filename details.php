@@ -145,7 +145,14 @@ class Module_Links extends Module {
 	}
 	
 	public function uninstall() {
-		return TRUE;
+		$links_tbl = $this->dbforge->drop_table('links');
+		$links_groups_tbl = $this->dbforge->drop_table('links_groups');
+		
+		if($links_tbl && $links_groups_tbl)
+		{
+			return TRUE;
+		}
+		return FALSE;
 	}
 	
 	public function upgrade($old_version) {

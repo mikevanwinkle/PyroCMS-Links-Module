@@ -3,8 +3,6 @@
 </section>
 
 <section class="item">
-	<p><?php echo lang('links_groups_admin.welcome'); ?></p>
-	<?php //print_r($groups); ?>
 	<?php if($groups): ?>
 		<table class="table-list">
 			<thead>
@@ -24,11 +22,13 @@
 					<td><?php echo $group->slug; ?></td>
 					<td><?php echo @$group->count; ?></td>
 					<td class="actions">
-					<?php echo anchor('admin/links/groups/edit/'.$group->id.'/', lang('global:edit'), 'class="btn orange"'); ?>
-					<?php echo anchor('admin/links/groups/delete/'.$group->id.'/', lang('global:delete'), 'class="confirm btn red"'); ?></td>
+					<?php echo anchor('admin/links/groups/edit/'.$group->id.'/', lang('global:edit'), 'class="button"'); ?>
+					<?php echo anchor('admin/links/groups/delete/'.$group->id.'/', lang('global:delete'), 'class="confirm button"'); ?></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+	<?php else: ?>
+		<div class="no_data"><?php echo lang('links_groups_admin.no_groups'); ?></div>
 	<?php endif; ?>
 </section>

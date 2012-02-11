@@ -9,10 +9,8 @@
 <?php echo form_open(uri_string(), 'class="crud"'); ?>
 	
 	<div class="form_inputs">
-	<fieldset>
 	<ul>
-		<li>
-			<li class="odd">
+		<li class="odd">
 			<label for="name"><?php echo lang('links_groups_admin.name_label'); ?> <span>*</span></label>
 			<div class="input"><?php echo form_input('name', htmlspecialchars_decode(@$group->name), 'maxlength="100" id="name"'); ?></div>				
 		</li>
@@ -24,14 +22,12 @@
 			</div>
 		</li>
 		
-		<li>
-			<li class="odd">
+		<li class="odd">
 			<label for="slug"><?php echo lang('links_groups_admin.slug_label'); ?> <span>*</span></label>
 			<div class="input"><?php echo form_input('slug', htmlspecialchars_decode(@$group->slug), 'maxlength="100" id="name"'); ?></div>				
 		</li>
 	
 	</ul>
-	</fieldset>	
 	<div class="buttons float-right padding-top">
 		<?php $this->load->view('admin/partials/buttons', array('buttons' => array('save', 'save_exit', 'cancel'))); ?>
 	</div>

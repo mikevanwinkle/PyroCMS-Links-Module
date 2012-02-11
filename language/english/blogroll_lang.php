@@ -9,9 +9,11 @@ $lang['links_admin.target_label'] = "Target";
 $lang['links_admin.name_label'] = 'Link Name';
 $lang['links_admin.create_button'] = "Add New Link";
 $lang['links_admin.groups'] = "Link Groups";
+$lang['links_admin.group_label'] = "Link Group";
 $lang['links_admin.edit_success'] = "The link \"%s\" was updated";
 $lang['links_admin.delete_fail'] = "Link could not be found.";
 $lang['links_admin.delete_success'] = "Link successfully deleted.";
+$lang['links_admin.no_links'] = 'There are no links to display';
 
 $lang['links_groups_admin.title'] = "Link Groups";
 $lang['links_groups_admin.welcome'] = "This is where you manage link groups";
@@ -24,4 +26,5 @@ $lang['links_groups_admin.description_label'] = 'Description';
 $lang['links_groups_admin.update_success'] = "Successfully updated group";
 $lang['links_groups_admin.update_failure'] = "Something happened and the system was unable to save the link group";
 $lang['links_groups_admin.delete_sucess'] = "Link group successfully deleted";
+$lang['links_groups_admin.no_groups'] = 'There are no groups to display';
 ?>

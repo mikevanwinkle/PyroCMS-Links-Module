@@ -3,8 +3,6 @@
 </section>
 
 <section class="item">
-	<p><?php echo lang('links_admin.welcome'); ?></p>
-	<?php //print_r($links); ?>
 	<?php if($links): ?>
 		<table class="table-list">
 			<thead>
@@ -26,11 +24,13 @@
 					<td><?php echo $link['link_group']; ?></td>
 					<td><?php echo $link['link_created']; ?></td>
 					<td class="actions">
-					<?php echo anchor('admin/links/edit/'.$link['id'].'/', lang('global:edit'), 'class="btn orange"'); ?>
-					<?php echo anchor('admin/links/delete/'.$link['id'].'/', lang('global:delete'), 'class="confirm btn red delete"'); ?></td>
+					<?php echo anchor('admin/links/edit/'.$link['id'].'/', lang('global:edit'), 'class="button"'); ?>
+					<?php echo anchor('admin/links/delete/'.$link['id'].'/', lang('global:delete'), 'class="confirm button"'); ?></td>
 				</tr>	
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+	<?php else: ?>
+		<div class="no_data"><?php echo lang('links_admin.no_links'); ?></div>
 	<?php endif; ?>
 </section>

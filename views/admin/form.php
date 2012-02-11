@@ -10,7 +10,6 @@
 <?php echo form_open(uri_string(), 'class="crud"'); ?>
 	
 	<div class="form_inputs">
-	<fieldset>
 	<ul>
 		<li class="odd">
 				<label for="link_name"><?php echo lang('links_admin.name_label'); ?> <span>*</span></label>
@@ -56,7 +55,6 @@
 		</div>
 		
 	</ul>
-	</fieldset>	
 	</div>
 	
 <?php echo form_close(); ?>
